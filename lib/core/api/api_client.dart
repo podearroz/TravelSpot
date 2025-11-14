@@ -6,7 +6,7 @@ import 'detailed_logging_interceptor.dart';
 class ApiClient {
   static const String baseUrl = 'https://your-api-base-url.com/api/v1';
   static ChopperClient? _client;
-  
+
   static ChopperClient get client {
     if (_client == null) {
       _client = ChopperClient(
@@ -20,7 +20,7 @@ class ApiClient {
     }
     return _client!;
   }
-  
+
   // Método para obter as APIs
   static AuthApi get authApi => AuthApi.create(client);
   static PlacesApi get placesApi => PlacesApi.create(client);

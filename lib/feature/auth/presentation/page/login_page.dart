@@ -62,7 +62,8 @@ class _LoginPageState extends State<LoginPage> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                          .hasMatch(value)) {
                         return 'Please enter a valid email';
                       }
                       return null;
@@ -93,11 +94,11 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           context.read<AuthBloc>().add(
-                            LoginRequested(
-                              email: _emailController.text.trim(),
-                              password: _passwordController.text,
-                            ),
-                          );
+                                LoginRequested(
+                                  email: _emailController.text.trim(),
+                                  password: _passwordController.text,
+                                ),
+                              );
                         }
                       },
                       child: const Text('Login'),

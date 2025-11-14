@@ -23,7 +23,7 @@ class RegisterRequested extends AuthEvent {
   final String name;
 
   const RegisterRequested({
-    required this.email, 
+    required this.email,
     required this.password,
     required this.name,
   });

@@ -14,7 +14,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Try<AuthResponseModel>> login(LoginRequestModel request) async {
     try {
       final response = await _authApi.login(request);
-      
+
       if (response.isSuccessful && response.body != null) {
         return Success(response.body!);
       } else {
@@ -29,7 +29,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Try<AuthResponseModel>> register(RegisterRequestModel request) async {
     try {
       final response = await _authApi.register(request);
-      
+
       if (response.isSuccessful && response.body != null) {
         return Success(response.body!);
       } else {
@@ -44,7 +44,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Try<void>> logout() async {
     try {
       final response = await _authApi.logout();
-      
+
       if (response.isSuccessful) {
         return Success(null);
       } else {

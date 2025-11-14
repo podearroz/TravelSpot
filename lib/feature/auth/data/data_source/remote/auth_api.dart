@@ -10,7 +10,8 @@ abstract class AuthApi extends ChopperService {
   Future<Response<AuthResponseModel>> login(@Body() LoginRequestModel request);
 
   @POST(path: "/auth/register")
-  Future<Response<AuthResponseModel>> register(@Body() RegisterRequestModel request);
+  Future<Response<AuthResponseModel>> register(
+      @Body() RegisterRequestModel request);
 
   @POST(path: "/auth/logout")
   Future<Response<void>> logout();

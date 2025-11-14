@@ -7,7 +7,7 @@ part 'auth_response_model.g.dart';
 class AuthResponseModel {
   final UserModel user;
   final String token;
-  
+
   const AuthResponseModel({
     required this.user,
     required this.token,

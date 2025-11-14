@@ -58,14 +58,15 @@ class SupabaseService {
   bool get isLoggedIn => _client.auth.currentUser != null;
 
   // Busca lugares com filtros opcionais
-  Future<List<Map<String, dynamic>>> fetchPlaces({String? type, String? cuisine}) async {
+  Future<List<Map<String, dynamic>>> fetchPlaces(
+      {String? type, String? cuisine}) async {
     try {
       var query = _client.from('places').select();
       if (type != null && type.isNotEmpty) query = query.eq('type', type);
       if (cuisine != null && cuisine.isNotEmpty) {
         query = query.eq('cuisine', cuisine);
       }
-      
+
       final data = await query;
       return List<Map<String, dynamic>>.from(data);
     } catch (e) {
@@ -91,16 +92,20 @@ class SupabaseService {
         throw TravelSpotAuthException('Usuário não autenticado');
       }
 
-      final data = await _client.from('places').insert({
-        'owner_id': userId,
-        'name': name,
-        'description': description,
-        'address': address,
-        'latitude': latitude,
-        'longitude': longitude,
-        'type': type,
-        'cuisine': cuisine,
-      }).select().single();
+      final data = await _client
+          .from('places')
+          .insert({
+            'owner_id': userId,
+            'name': name,
+            'description': description,
+            'address': address,
+            'latitude': latitude,
+            'longitude': longitude,
+            'type': type,
+            'cuisine': cuisine,
+          })
+          .select()
+          .single();
 
       return Map<String, dynamic>.from(data);
     } catch (e) {
@@ -140,13 +145,17 @@ class SupabaseService {
         throw TravelSpotAuthException('Usuário não autenticado');
       }
 
-      final data = await _client.from('reviews').insert({
-        'place_id': placeId,
-        'author_id': userId,
-        'rating': rating,
-        'comment': comment,
-        'image_url': imageUrl,
-      }).select().single();
+      final data = await _client
+          .from('reviews')
+          .insert({
+            'place_id': placeId,
+            'author_id': userId,
+            'rating': rating,
+            'comment': comment,
+            'image_url': imageUrl,
+          })
+          .select()
+          .single();
 
       return Map<String, dynamic>.from(data);
     } catch (e) {
@@ -160,9 +169,9 @@ class SupabaseService {
   Future<String> uploadImage(Uint8List imageBytes, String fileName) async {
     try {
       final path = 'uploads/${DateTime.now().millisecondsSinceEpoch}_$fileName';
-      
+
       await _client.storage.from('images').uploadBinary(path, imageBytes);
-      
+
       return _client.storage.from('images').getPublicUrl(path);
     } catch (e) {
       throw ServerException(

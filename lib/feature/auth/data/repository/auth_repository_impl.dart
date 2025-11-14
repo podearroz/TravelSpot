@@ -13,7 +13,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Try<User>> login(String email, String password) async {
     final request = LoginRequestModel(email: email, password: password);
     final result = await _remoteDataSource.login(request);
-    
+
     return result.fold(
       (failure) => Rejection(failure),
       (response) => Success(response.user),
@@ -22,9 +22,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Try<User>> register(String email, String password, String name) async {
-    final request = RegisterRequestModel(email: email, password: password, name: name);
+    final request =
+        RegisterRequestModel(email: email, password: password, name: name);
     final result = await _remoteDataSource.register(request);
-    
+
     return result.fold(
       (failure) => Rejection(failure),
       (response) => Success(response.user),

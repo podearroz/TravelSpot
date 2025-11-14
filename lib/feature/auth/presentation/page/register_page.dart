@@ -80,7 +80,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                          .hasMatch(value)) {
                         return 'Please enter a valid email';
                       }
                       return null;
@@ -129,12 +130,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           context.read<AuthBloc>().add(
-                            RegisterRequested(
-                              name: _nameController.text.trim(),
-                              email: _emailController.text.trim(),
-                              password: _passwordController.text,
-                            ),
-                          );
+                                RegisterRequested(
+                                  name: _nameController.text.trim(),
+                                  email: _emailController.text.trim(),
+                                  password: _passwordController.text,
+                                ),
+                              );
                         }
                       },
                       child: const Text('Register'),

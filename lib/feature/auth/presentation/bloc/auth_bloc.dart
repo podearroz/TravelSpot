@@ -46,8 +46,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
 
     final params = RegisterParams(
-      email: event.email, 
-      password: event.password, 
+      email: event.email,
+      password: event.password,
       name: event.name,
     );
     final result = await _registerUseCase(params);

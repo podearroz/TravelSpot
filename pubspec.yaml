@@ -1,10 +1,10 @@
 name: travelspot
 description: Flutter frontend app for TravelSpot project
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.6.0 <4.0.0'
+  sdk: ">=3.6.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -41,10 +41,10 @@ dependencies:
 
   # Camera e Imagem
   image_picker: ^1.1.2
-  
+
   # Backend
   supabase_flutter: ^2.7.0
-  
+
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
@@ -56,6 +56,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  
+
   assets:
     - .env

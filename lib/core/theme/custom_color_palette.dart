@@ -10,7 +10,8 @@ class CustomLightPalette implements ColorPalette {
   const CustomLightPalette({
     required Color primary,
     required Color secondary,
-  }) : _primary = primary, _secondary = secondary;
+  })  : _primary = primary,
+        _secondary = secondary;
 
   @override
   Color primary() => _primary;
@@ -88,7 +89,8 @@ class CustomDarkPalette implements ColorPalette {
   const CustomDarkPalette({
     required Color primary,
     required Color secondary,
-  }) : _primary = primary, _secondary = secondary;
+  })  : _primary = primary,
+        _secondary = secondary;
 
   @override
   Color primary() => _primary;

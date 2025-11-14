@@ -13,9 +13,10 @@ class TravelSpotTheme {
   }
 
   /// Criar tema customizado com cores específicas
-  static ThemeData themeWithPalette(Brightness brightness, ColorPalette palette) {
+  static ThemeData themeWithPalette(
+      Brightness brightness, ColorPalette palette) {
     final isLight = brightness == Brightness.light;
-    
+
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
@@ -159,8 +160,10 @@ class TravelSpotTheme {
   }
 
   /// Tema padrão claro
-  static ThemeData get lightTheme => themeWithPalette(Brightness.light, _lightColorPalette);
+  static ThemeData get lightTheme =>
+      themeWithPalette(Brightness.light, _lightColorPalette);
 
-  /// Tema padrão escuro  
-  static ThemeData get darkTheme => themeWithPalette(Brightness.dark, _darkColorPalette);
+  /// Tema padrão escuro
+  static ThemeData get darkTheme =>
+      themeWithPalette(Brightness.dark, _darkColorPalette);
 }

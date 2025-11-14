@@ -17,7 +17,8 @@ class AppRoutes {
     return {
       login: (context) => const LoginPage(),
       register: (context) => const RegisterPage(),
-      home: (context) => const PlacesListPage(), // Home aponta para Places por enquanto
+      home: (context) =>
+          const PlacesListPage(), // Home aponta para Places por enquanto
       places: (context) => const PlacesListPage(),
       addPlace: (context) => const AddPlacePage(),
     };

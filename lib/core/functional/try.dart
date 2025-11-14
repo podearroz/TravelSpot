@@ -11,7 +11,7 @@ abstract class Try<T> extends Either<Failure, T> {
           (err) => ifLeft(err),
           (res) =>
               t.fold((err2) => ifLeft(err2), (res2) => ifRight(res, res2)));
-  
+
   Try<O> transform<O>({required O data}) =>
       fold((err) => Rejection<O>(err), (_) => Success<O>(data));
 
@@ -37,14 +37,14 @@ class Success<T> extends Try<T> {
 
   @override
   bool operator ==(other) => other is Success && other._data == _data;
-  
+
   @override
   int get hashCode => _data.hashCode;
 
   @override
   B fold<B>(B Function(Failure l) ifLeft, B Function(T r) ifRight) =>
       ifRight(_data);
-  
+
   T get() => _data;
 }
 
@@ -58,7 +58,7 @@ class Rejection<T> extends Try<T> {
 
   @override
   bool operator ==(other) => other is Rejection && other._error == _error;
-  
+
   @override
   int get hashCode => _error.hashCode;
 

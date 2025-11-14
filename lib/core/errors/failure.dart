@@ -21,7 +21,7 @@ class KnownFailure extends Failure {
   final String? message;
   KnownFailure(String code, dynamic err, {this.message})
       : super(code: code, error: err);
-  
+
   @override
   String toString() {
     return "code: $code - err: $error - message: $message";

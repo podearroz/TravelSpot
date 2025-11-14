@@ -15,7 +15,8 @@ abstract class PlacesApi extends ChopperService {
   Future<Response<PlaceModel>> createPlace(@Body() PlaceModel place);
 
   @PUT(path: "/places/{id}")
-  Future<Response<PlaceModel>> updatePlace(@Path() String id, @Body() PlaceModel place);
+  Future<Response<PlaceModel>> updatePlace(
+      @Path() String id, @Body() PlaceModel place);
 
   @DELETE(path: "/places/{id}")
   Future<Response<void>> deletePlace(@Path() String id);

@@ -43,7 +43,7 @@ class ApiClient {
       case DioExceptionType.badResponse:
         final statusCode = error.response?.statusCode;
         final message = error.response?.data?['message'] ?? 'Erro no servidor';
-        
+
         if (statusCode != null && statusCode >= 400 && statusCode < 500) {
           if (statusCode == 401 || statusCode == 403) {
             return AuthException(
