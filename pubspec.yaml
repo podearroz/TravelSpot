@@ -1,24 +1,61 @@
 name: travelspot
-description: Flutter frontend mínimo para o projeto TravelSpot
+description: Flutter frontend app for TravelSpot project
 publish_to: 'none'
 version: 0.1.0
+
 environment:
-  sdk: '>=2.18.0 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Http client
+  chopper: ^8.1.0
+  dio: ^5.7.0
+  http: ^1.2.2
+
+  # Gerenciamento de Estados
+  flutter_bloc: ^7.3.3
+
+  # Injeção de Dependências
+  get_it: ^8.0.3
+
+  # Funcional
+  dartz: ^0.10.0
+  equatable: ^2.0.3
+
+  # Utils
+  json_annotation: ^4.8.1
+  logging: ^1.3.0
+  intl: ^0.19.0
+  uuid: ^4.5.1
+  flutter_dotenv: ^5.1.0
+
+  # UI
+  flutter_svg: ^2.2.1
+  cached_network_image: ^3.1.0
+  auto_size_text: ^3.0.0
+
+  # Camera e Imagem
+  image_picker: ^1.1.2
+  
+  # Backend
+  supabase_flutter: ^2.7.0
+  
   cupertino_icons: ^1.0.2
-  supabase_flutter: ^1.4.0
-  http: ^0.13.6
-  image_picker: ^0.8.7+5
-  dio: ^5.2.0
-  chopper: ^6.1.4
-  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^2.4.7
+  chopper_generator: ^8.1.0
+  json_serializable: ^6.8.0
 
 flutter:
   uses-material-design: true
+  
+  assets:
+    - .env
