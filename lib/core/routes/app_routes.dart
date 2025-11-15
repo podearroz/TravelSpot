@@ -6,7 +6,7 @@ import '../../feature/places/presentation/page/add_place_page.dart';
 import '../../feature/places/domain/entity/place.dart';
 
 class AppRoutes {
-  static const String login = '/';
+  static const String login = '/login';
   static const String register = '/register';
   static const String home = '/home';
   static const String places = '/places';

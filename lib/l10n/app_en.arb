@@ -1,0 +1,162 @@
+{
+  "@@locale": "en",
+  "appTitle": "TravelSpot",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "login": "Login",
+  "@login": {
+    "description": "Login button text"
+  },
+  
+  "register": "Register",
+  "@register": {
+    "description": "Register button text"
+  },
+  
+  "email": "Email",
+  "@email": {
+    "description": "Email field label"
+  },
+  
+  "password": "Password",
+  "@password": {
+    "description": "Password field label"
+  },
+  
+  "name": "Name",
+  "@name": {
+    "description": "Name field label"
+  },
+  
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": {
+    "description": "Confirm password field label"
+  },
+  
+  "emailRequired": "Please enter your email",
+  "@emailRequired": {
+    "description": "Email validation message"
+  },
+  
+  "emailInvalid": "Please enter a valid email",
+  "@emailInvalid": {
+    "description": "Invalid email validation message"
+  },
+  
+  "passwordRequired": "Please enter your password",
+  "@passwordRequired": {
+    "description": "Password validation message"
+  },
+  
+  "passwordTooShort": "Password must be at least 6 characters",
+  "@passwordTooShort": {
+    "description": "Password too short validation message"
+  },
+  
+  "nameRequired": "Please enter your name",
+  "@nameRequired": {
+    "description": "Name validation message"
+  },
+  
+  "confirmPasswordRequired": "Please confirm your password",
+  "@confirmPasswordRequired": {
+    "description": "Confirm password validation message"
+  },
+  
+  "passwordsDoNotMatch": "Passwords do not match",
+  "@passwordsDoNotMatch": {
+    "description": "Passwords do not match validation message"
+  },
+  
+  "dontHaveAccount": "Don't have an account? Register",
+  "@dontHaveAccount": {
+    "description": "Link to register page"
+  },
+  
+  "alreadyHaveAccount": "Already have an account? Login",
+  "@alreadyHaveAccount": {
+    "description": "Link to login page"
+  },
+  
+  "loginSuccess": "Login successful!",
+  "@loginSuccess": {
+    "description": "Login success message"
+  },
+  
+  "registerSuccess": "Registration successful!",
+  "@registerSuccess": {
+    "description": "Registration success message"
+  },
+  
+  "loginFailed": "Login failed",
+  "@loginFailed": {
+    "description": "Login failed message"
+  },
+  
+  "registrationFailed": "Registration failed",
+  "@registrationFailed": {
+    "description": "Registration failed message"
+  },
+  
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading message"
+  },
+  
+  "welcome": "Welcome to TravelSpot!",
+  "@welcome": {
+    "description": "Welcome message"
+  },
+  
+  "createAccount": "Create your account",
+  "@createAccount": {
+    "description": "Create account subtitle"
+  },
+  
+  "signInToAccount": "Sign in to your account",
+  "@signInToAccount": {
+    "description": "Sign in subtitle"
+  },
+  
+  "biometricTitle": "Welcome back!",
+  "@biometricTitle": {
+    "description": "Biometric authentication title"
+  },
+  
+  "biometricDescription": "Use your biometric to quickly access your account",
+  "@biometricDescription": {
+    "description": "Biometric authentication description"
+  },
+  
+  "useBiometric": "Use Biometric",
+  "@useBiometric": {
+    "description": "Use biometric button"
+  },
+  
+  "useEmailPassword": "Use Email and Password",
+  "@useEmailPassword": {
+    "description": "Use email and password button"
+  },
+  
+  "biometricAlternative": "Or tap \"Use Email and Password\" to login normally",
+  "@biometricAlternative": {
+    "description": "Biometric alternative text"
+  },
+  
+  "biometricAuthenticating": "Checking biometrics...",
+  "@biometricAuthenticating": {
+    "description": "Biometric authentication in progress"
+  },
+  
+  "biometricError": "Biometric authentication error",
+  "@biometricError": {
+    "description": "Biometric authentication error"
+  },
+  
+  "goToLogin": "Go to Login",
+  "@goToLogin": {
+    "description": "Go to login button"
+  }
+}
