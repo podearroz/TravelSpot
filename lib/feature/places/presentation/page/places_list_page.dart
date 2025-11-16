@@ -455,32 +455,12 @@ class _PlacesListPageState extends State<PlacesListPage>
           },
         ),
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          // Botão de teste de sessão expirada (REMOVER EM PRODUÇÃO)
-          FloatingActionButton(
-            onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                '/session-expired',
-                (route) => false,
-              );
-            },
-            tooltip: 'Testar Sessão Expirada',
-            heroTag: 'test_session',
-            child: const Icon(Icons.bug_report),
-          ),
-          const SizedBox(height: 16),
-          // Botão principal de adicionar place
-          FloatingActionButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('/add-place');
-            },
-            tooltip: 'Adicionar Local',
-            heroTag: 'add_place',
-            child: const Icon(Icons.add),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/add-place');
+        },
+        tooltip: 'Adicionar Local',
+        child: const Icon(Icons.add),
       ),
       // Remover qualquer BottomAppBar ou bottomNavigationBar manual daqui
     );
