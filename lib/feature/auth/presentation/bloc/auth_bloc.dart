@@ -46,10 +46,10 @@ class AuthBloc extends Bloc<AuthEvent, app_auth.AuthState> {
     Emitter<app_auth.AuthState> emit,
   ) async {
     emit(app_auth.AuthLoading());
-    
+
     // Garantir que qualquer sessão anterior seja limpa antes do login
     await _logoutUseCase();
-    
+
     final params = LoginParams(email: event.email, password: event.password);
     final result = await _loginUseCase(params);
 
@@ -67,10 +67,10 @@ class AuthBloc extends Bloc<AuthEvent, app_auth.AuthState> {
     Emitter<app_auth.AuthState> emit,
   ) async {
     emit(app_auth.AuthLoading());
-    
+
     // Garantir que qualquer sessão anterior seja limpa antes do registro
     await _logoutUseCase();
-    
+
     final params = RegisterParams(
       email: event.email,
       password: event.password,
@@ -103,15 +103,17 @@ class AuthBloc extends Bloc<AuthEvent, app_auth.AuthState> {
     Emitter<app_auth.AuthState> emit,
   ) async {
     emit(app_auth.AuthLoading());
-    
+
     // Verificar se há sessão em cache
     final cachedUserResult = await _checkCachedUserUseCase();
     final cachedUserInfo = cachedUserResult.getOrElse(() => null);
-    
+
     if (cachedUserInfo != null) {
       // Há usuário em cache - ir para tela de login para mostrar opção de biometria
-      print('✅ Sessão em cache encontrada, redirecionando para login com opção de biometria');
-      emit(app_auth.AuthUnauthenticated(reason: 'Session cached, show biometric option'));
+      print(
+          '✅ Sessão em cache encontrada, redirecionando para login com opção de biometria');
+      emit(app_auth.AuthUnauthenticated(
+          reason: 'Session cached, show biometric option'));
     } else {
       // Não há cache - ir para tela de login normal
       print('❌ Nenhuma sessão em cache, redirecionando para login');
@@ -130,14 +132,16 @@ class AuthBloc extends Bloc<AuthEvent, app_auth.AuthState> {
     final cachedUserInfo = cachedUserResult.getOrElse(() => null);
 
     if (cachedUserInfo == null || !cachedUserInfo.canUseBiometric) {
-      emit(app_auth.AuthError(message: 'Biometria não configurada ou nenhum usuário em cache.'));
+      emit(app_auth.AuthError(
+          message: 'Biometria não configurada ou nenhum usuário em cache.'));
       return;
     }
 
     // 2. Autenticar com biometria
     final isAuthenticated = await _biometricService.authenticateForLogin();
     if (!isAuthenticated) {
-      emit(app_auth.AuthUnauthenticated(reason: 'Biometric authentication cancelled'));
+      emit(app_auth.AuthUnauthenticated(
+          reason: 'Biometric authentication cancelled'));
       return;
     }
 
@@ -145,12 +149,15 @@ class AuthBloc extends Bloc<AuthEvent, app_auth.AuthState> {
     // O use case cuidará de usar o refresh token se necessário
     final userResult = await _getCurrentUserUseCase();
     userResult.fold(
-      (failure) => emit(app_auth.AuthError(message: 'Sessão expirada. Faça login novamente.')),
+      (failure) => emit(app_auth.AuthError(
+          message: 'Sessão expirada. Faça login novamente.')),
       (user) {
         if (user != null) {
           emit(app_auth.AuthAuthenticated(user: user));
         } else {
-          emit(app_auth.AuthError(message: 'Não foi possível renovar a sessão. Faça login novamente.'));
+          emit(app_auth.AuthError(
+              message:
+                  'Não foi possível renovar a sessão. Faça login novamente.'));
         }
       },
     );
@@ -167,7 +174,8 @@ class AuthBloc extends Bloc<AuthEvent, app_auth.AuthState> {
         if (user != null) {
           emit(app_auth.AuthAuthenticated(user: user));
         } else {
-          emit(app_auth.AuthUnauthenticated(reason: 'No user found during sync'));
+          emit(app_auth.AuthUnauthenticated(
+              reason: 'No user found during sync'));
         }
       },
     );

@@ -44,7 +44,8 @@ void main() async {
 class TravelSpotApp extends StatelessWidget {
   const TravelSpotApp({super.key});
 
-  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {

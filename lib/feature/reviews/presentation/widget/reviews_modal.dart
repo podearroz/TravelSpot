@@ -63,7 +63,9 @@ class ReviewsModal extends StatelessWidget {
                       }
                       if (state is ReviewsErrorState) {
                         return Center(
-                            child: Text(AppLocalizations.of(context).reviewsError(state.message),
+                            child: Text(
+                                AppLocalizations.of(context)
+                                    .reviewsError(state.message),
                                 style: const TextStyle(color: Colors.red)));
                       }
                       if (state is ReviewsLoadedState) {
@@ -92,7 +94,8 @@ class ReviewsModal extends StatelessWidget {
                                     Expanded(child: Text(review.comment!)),
                                 ],
                               ),
-                              subtitle: Text(AppLocalizations.of(context).reviewBy(review.authorId)),
+                              subtitle: Text(AppLocalizations.of(context)
+                                  .reviewBy(review.authorId)),
                             );
                           },
                         );
@@ -116,8 +119,8 @@ class ReviewsModal extends StatelessWidget {
                       if (userId == null) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content:
-                                Text(AppLocalizations.of(context).needsAuthToReview),
+                            content: Text(
+                                AppLocalizations.of(context).needsAuthToReview),
                             backgroundColor: Colors.orange,
                           ),
                         );

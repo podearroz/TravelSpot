@@ -419,12 +419,13 @@ class _AddPlacePageState extends State<AddPlacePage> {
     } catch (e, stackTrace) {
       print('ERRO ao selecionar/recortar imagem: $e');
       print('Stack trace: $stackTrace');
-      
+
       if (!mounted) return;
       final palette = AppTheme.paletteOf(Theme.of(context));
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context).imageProcessingError(e.toString())),
+          content: Text(
+              AppLocalizations.of(context).imageProcessingError(e.toString())),
           backgroundColor: palette.error(),
           duration: const Duration(seconds: 5),
         ),
