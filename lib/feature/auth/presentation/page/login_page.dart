@@ -84,7 +84,8 @@ class _LoginPageState extends State<LoginPage> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(l10n.loginSuccess),
-                backgroundColor: AppTheme.paletteOf(Theme.of(context)).success(),
+                backgroundColor:
+                    AppTheme.paletteOf(Theme.of(context)).success(),
               ),
             );
             // Não precisa navegar aqui, o BlocListener global do main.dart fará isso
@@ -138,7 +139,8 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       l10n.orContinueWithEmail,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                            color: AppTheme.paletteOf(Theme.of(context))
+                                .textSecondary(),
                           ),
                       textAlign: TextAlign.center,
                     ),
@@ -272,7 +274,8 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       _cachedUserInfo!.user.email,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                            color: AppTheme.paletteOf(Theme.of(context))
+                                .textSecondary(),
                           ),
                     ),
                   ],
@@ -294,7 +297,8 @@ class _LoginPageState extends State<LoginPage> {
                   ? l10n.signInWithBiometric
                   : l10n.signInWithPin),
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.paletteOf(Theme.of(context)).primary(),
+                backgroundColor:
+                    AppTheme.paletteOf(Theme.of(context)).primary(),
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(

@@ -81,7 +81,8 @@ class _PlacesListPageState extends State<PlacesListPage>
               title: Text(AppLocalizations.of(context).places),
               automaticallyImplyLeading: false,
               leading: IconButton(
-                icon: Icon(Icons.logout, color: AppTheme.paletteOf(Theme.of(context)).error()),
+                icon: Icon(Icons.logout,
+                    color: AppTheme.paletteOf(Theme.of(context)).error()),
                 tooltip: AppLocalizations.of(context).logout,
                 onPressed: () {
                   context.read<AuthBloc>().add(LogoutRequested());
@@ -94,7 +95,8 @@ class _PlacesListPageState extends State<PlacesListPage>
           : AppBar(
               title: Text(AppLocalizations.of(context).places),
               leading: IconButton(
-                icon: Icon(Icons.logout, color: AppTheme.paletteOf(Theme.of(context)).error()),
+                icon: Icon(Icons.logout,
+                    color: AppTheme.paletteOf(Theme.of(context)).error()),
                 tooltip: AppLocalizations.of(context).logout,
                 onPressed: () {
                   context.read<AuthBloc>().add(LogoutRequested());
@@ -116,7 +118,8 @@ class _PlacesListPageState extends State<PlacesListPage>
           if (state is FavoritesErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(AppLocalizations.of(context).errorFavoriting(state.message)),
+                content: Text(AppLocalizations.of(context)
+                    .errorFavoriting(state.message)),
                 backgroundColor: AppTheme.paletteOf(Theme.of(context)).error(),
               ),
             );
@@ -154,7 +157,8 @@ class _PlacesListPageState extends State<PlacesListPage>
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                        color: AppTheme.paletteOf(Theme.of(context))
+                            .textSecondary(),
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -181,14 +185,16 @@ class _PlacesListPageState extends State<PlacesListPage>
                     Icon(
                       Icons.place_outlined,
                       size: 64,
-                      color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                      color:
+                          AppTheme.paletteOf(Theme.of(context)).textSecondary(),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       AppLocalizations.of(context).noPlacesFound,
                       style: TextStyle(
                         fontSize: 18,
-                        color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                        color: AppTheme.paletteOf(Theme.of(context))
+                            .textSecondary(),
                       ),
                     ),
                   ],
@@ -227,74 +233,91 @@ class _PlacesListPageState extends State<PlacesListPage>
                           // Imagem com aspect ratio 16:9 ou placeholder
                           GestureDetector(
                             onTap: place.photoUrl != null
-                                ? () => _showImageDialog(context, place.photoUrl!, place.id)
+                                ? () => _showImageDialog(
+                                    context, place.photoUrl!, place.id)
                                 : null,
                             child: Stack(
-                                children: [
-                                  AspectRatio(
-                                    aspectRatio: 16 / 9,
-                                    child: place.photoUrl != null
-                                        ? Hero(
-                                            tag: 'place_${place.id}',
-                                            child: Image.network(
-                                              place.photoUrl!,
-                                              fit: BoxFit.cover,
-                                              errorBuilder: (context, error, stackTrace) {
-                                                return _buildImagePlaceholder();
-                                              },
-                                              loadingBuilder: (context, child, loadingProgress) {
-                                                if (loadingProgress == null) return child;
-                                                return Container(
-                                                  color: AppTheme.paletteOf(Theme.of(context))
-                                                      .textSecondary()
-                                                      .withOpacity(0.1),
-                                                  child: Center(
-                                                    child: CircularProgressIndicator(
-                                                      value: loadingProgress.expectedTotalBytes != null
-                                                          ? loadingProgress.cumulativeBytesLoaded /
-                                                              loadingProgress.expectedTotalBytes!
-                                                          : null,
-                                                    ),
+                              children: [
+                                AspectRatio(
+                                  aspectRatio: 16 / 9,
+                                  child: place.photoUrl != null
+                                      ? Hero(
+                                          tag: 'place_${place.id}',
+                                          child: Image.network(
+                                            place.photoUrl!,
+                                            fit: BoxFit.cover,
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return _buildImagePlaceholder();
+                                            },
+                                            loadingBuilder: (context, child,
+                                                loadingProgress) {
+                                              if (loadingProgress == null)
+                                                return child;
+                                              return Container(
+                                                color: AppTheme.paletteOf(
+                                                        Theme.of(context))
+                                                    .textSecondary()
+                                                    .withOpacity(0.1),
+                                                child: Center(
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    value: loadingProgress
+                                                                .expectedTotalBytes !=
+                                                            null
+                                                        ? loadingProgress
+                                                                .cumulativeBytesLoaded /
+                                                            loadingProgress
+                                                                .expectedTotalBytes!
+                                                        : null,
                                                   ),
-                                                );
-                                              },
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        )
+                                      : _buildImagePlaceholder(),
+                                ),
+                                // Botão de favorito sobreposto
+                                Positioned(
+                                  top: 8,
+                                  right: 8,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.9),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: IconButton(
+                                      onPressed: isLoadingThisItem
+                                          ? null
+                                          : () => _toggleFavorite(
+                                              place, isFavorite),
+                                      icon: isLoadingThisItem
+                                          ? const SizedBox(
+                                              width: 24,
+                                              height: 24,
+                                              child: CircularProgressIndicator(
+                                                  strokeWidth: 2),
+                                            )
+                                          : Icon(
+                                              isFavorite
+                                                  ? Icons.favorite
+                                                  : Icons.favorite_border,
+                                              color: isFavorite
+                                                  ? AppTheme.paletteOf(
+                                                          Theme.of(context))
+                                                      .error()
+                                                  : AppTheme.paletteOf(
+                                                          Theme.of(context))
+                                                      .textSecondary(),
                                             ),
-                                          )
-                                        : _buildImagePlaceholder(),
-                                  ),
-                                  // Botão de favorito sobreposto
-                                  Positioned(
-                                    top: 8,
-                                    right: 8,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white.withOpacity(0.9),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: IconButton(
-                                        onPressed: isLoadingThisItem
-                                            ? null
-                                            : () => _toggleFavorite(place, isFavorite),
-                                        icon: isLoadingThisItem
-                                            ? const SizedBox(
-                                                width: 24,
-                                                height: 24,
-                                                child: CircularProgressIndicator(strokeWidth: 2),
-                                              )
-                                            : Icon(
-                                                isFavorite ? Icons.favorite : Icons.favorite_border,
-                                                color: isFavorite
-                                                    ? AppTheme.paletteOf(Theme.of(context)).error()
-                                                    : AppTheme.paletteOf(Theme.of(context))
-                                                        .textSecondary(),
-                                              ),
-                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          
+                          ),
+
                           // Conteúdo do card
                           Padding(
                             padding: const EdgeInsets.all(16),
@@ -316,7 +339,7 @@ class _PlacesListPageState extends State<PlacesListPage>
                                     ),
                                   ],
                                 ),
-                                
+
                                 if (place.placeType != null) ...[
                                   const SizedBox(height: 8),
                                   Container(
@@ -325,7 +348,9 @@ class _PlacesListPageState extends State<PlacesListPage>
                                       vertical: 6,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: Theme.of(context).primaryColor.withOpacity(0.1),
+                                      color: Theme.of(context)
+                                          .primaryColor
+                                          .withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: Text(
@@ -338,16 +363,18 @@ class _PlacesListPageState extends State<PlacesListPage>
                                     ),
                                   ),
                                 ],
-                                
+
                                 const SizedBox(height: 12),
-                                
+
                                 // Avaliação
                                 Row(
                                   children: [
                                     Icon(
                                       Icons.star,
                                       size: 18,
-                                      color: AppTheme.paletteOf(Theme.of(context)).warning(),
+                                      color:
+                                          AppTheme.paletteOf(Theme.of(context))
+                                              .warning(),
                                     ),
                                     const SizedBox(width: 4),
                                     Text(
@@ -362,26 +389,30 @@ class _PlacesListPageState extends State<PlacesListPage>
                                       '(${place.reviewCount})',
                                       style: TextStyle(
                                         fontSize: 13,
-                                        color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                                        color: AppTheme.paletteOf(
+                                                Theme.of(context))
+                                            .textSecondary(),
                                       ),
                                     ),
                                   ],
                                 ),
-                                
+
                                 if (place.description != null) ...[
                                   const SizedBox(height: 12),
                                   Text(
                                     place.description!,
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                                      color:
+                                          AppTheme.paletteOf(Theme.of(context))
+                                              .textSecondary(),
                                       height: 1.4,
                                     ),
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ],
-                                
+
                                 if (place.address != null) ...[
                                   const SizedBox(height: 12),
                                   Row(
@@ -389,7 +420,9 @@ class _PlacesListPageState extends State<PlacesListPage>
                                       Icon(
                                         Icons.location_on_outlined,
                                         size: 16,
-                                        color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                                        color: AppTheme.paletteOf(
+                                                Theme.of(context))
+                                            .textSecondary(),
                                       ),
                                       const SizedBox(width: 4),
                                       Expanded(
@@ -397,7 +430,8 @@ class _PlacesListPageState extends State<PlacesListPage>
                                           place.address!,
                                           style: TextStyle(
                                             fontSize: 13,
-                                            color: AppTheme.paletteOf(Theme.of(context))
+                                            color: AppTheme.paletteOf(
+                                                    Theme.of(context))
                                                 .textSecondary(),
                                           ),
                                           maxLines: 1,
@@ -407,9 +441,9 @@ class _PlacesListPageState extends State<PlacesListPage>
                                     ],
                                   ),
                                 ],
-                                
+
                                 const SizedBox(height: 12),
-                                
+
                                 // Botões de ação
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
@@ -422,7 +456,9 @@ class _PlacesListPageState extends State<PlacesListPage>
                                           backgroundColor: Colors.transparent,
                                           builder: (ctx) {
                                             return BlocProvider.value(
-                                              value: BlocProvider.of<ReviewsBloc>(context),
+                                              value:
+                                                  BlocProvider.of<ReviewsBloc>(
+                                                      context),
                                               child: ReviewsModal(
                                                 placeId: place.id,
                                                 placeName: place.name,
@@ -431,14 +467,19 @@ class _PlacesListPageState extends State<PlacesListPage>
                                           },
                                         );
                                       },
-                                      icon: const Icon(Icons.rate_review_outlined, size: 18),
-                                      label: Text(AppLocalizations.of(context).reviewLabel),
+                                      icon: const Icon(
+                                          Icons.rate_review_outlined,
+                                          size: 18),
+                                      label: Text(AppLocalizations.of(context)
+                                          .reviewLabel),
                                     ),
                                     const SizedBox(width: 8),
                                     TextButton.icon(
                                       onPressed: () => _viewPlaceDetails(place),
-                                      icon: const Icon(Icons.info_outline, size: 18),
-                                      label: Text(AppLocalizations.of(context).viewDetails),
+                                      icon: const Icon(Icons.info_outline,
+                                          size: 18),
+                                      label: Text(AppLocalizations.of(context)
+                                          .viewDetails),
                                     ),
                                   ],
                                 ),
@@ -488,10 +529,10 @@ class _PlacesListPageState extends State<PlacesListPage>
 
   void _toggleFavorite(Place place, bool isFavorite) {
     final authState = context.read<AuthBloc>().state;
-    
+
     print('🔍 _toggleFavorite chamado');
     print('🔍 Estado de autenticação: ${authState.runtimeType}');
-    
+
     if (authState is! AuthAuthenticated) {
       print('❌ Usuário NÃO autenticado');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -593,7 +634,8 @@ class _PlacesListPageState extends State<PlacesListPage>
     );
   }
 
-  Widget _buildShimmerBox(double width, double height, {double borderRadius = 4}) {
+  Widget _buildShimmerBox(double width, double height,
+      {double borderRadius = 4}) {
     return AnimatedBuilder(
       animation: _shimmerController,
       builder: (context, child) {
@@ -638,7 +680,9 @@ class _PlacesListPageState extends State<PlacesListPage>
         child: Icon(
           Icons.image_outlined,
           size: 64,
-          color: AppTheme.paletteOf(Theme.of(context)).textSecondary().withOpacity(0.3),
+          color: AppTheme.paletteOf(Theme.of(context))
+              .textSecondary()
+              .withOpacity(0.3),
         ),
       ),
     );
@@ -685,13 +729,15 @@ class _PlacesListPageState extends State<PlacesListPage>
                                 Icon(
                                   Icons.error_outline,
                                   size: 64,
-                                  color: AppTheme.paletteOf(Theme.of(context)).error(),
+                                  color: AppTheme.paletteOf(Theme.of(context))
+                                      .error(),
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
                                   'Erro ao carregar imagem',
                                   style: TextStyle(
-                                    color: AppTheme.paletteOf(Theme.of(context)).textPrimary(),
+                                    color: AppTheme.paletteOf(Theme.of(context))
+                                        .textPrimary(),
                                   ),
                                 ),
                               ],

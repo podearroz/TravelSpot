@@ -59,7 +59,8 @@ class SupabaseAuthRepositoryImpl implements AuthRepository {
         }
         return Success(User.fromSupabase(user));
       } else {
-        return Rejection(AuthenticationFailure('Registration failed: No user returned'));
+        return Rejection(
+            AuthenticationFailure('Registration failed: No user returned'));
       }
     } on supabase.AuthException catch (e) {
       return Rejection(AuthenticationFailure(e.message));
@@ -73,12 +74,12 @@ class SupabaseAuthRepositoryImpl implements AuthRepository {
     try {
       await _supabaseClient.auth.signOut();
       await _localStorageService.clearSession();
-      
+
       // Nota: Não chamamos SupabaseRestClient.reset() aqui para evitar
       // o erro "Cannot add new events after calling close" se houver
       // requisições em andamento. Os clientes serão recriados automaticamente
       // na próxima requisição com os novos headers (sem token).
-      
+
       return Success(null);
     } on supabase.AuthException catch (e) {
       return Rejection(AuthenticationFailure('Logout failed: ${e.message}'));
@@ -107,7 +108,6 @@ class SupabaseAuthRepositoryImpl implements AuthRepository {
       // Limpar qualquer resquício de sessão local para evitar inconsistências.
       await _localStorageService.clearSession();
       return Success(null);
-      
     } on supabase.AuthException catch (e) {
       // Se houver um erro de autenticação (ex: refresh token inválido),
       // o usuário deve ser deslogado.

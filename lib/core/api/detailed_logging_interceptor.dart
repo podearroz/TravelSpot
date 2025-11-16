@@ -59,7 +59,8 @@ class DetailedLoggingInterceptor implements Interceptor {
         if (body is String && body.isNotEmpty) {
           bodyToLog = jsonDecode(body);
         }
-        final prettyJson = const JsonEncoder.withIndent('  ').convert(bodyToLog);
+        final prettyJson =
+            const JsonEncoder.withIndent('  ').convert(bodyToLog);
         _logger.info(prettyJson.split('\n').map((l) => '│   $l').join('\n'));
       } catch (e) {
         _logger.info('│   $body');
