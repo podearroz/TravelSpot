@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../error/exceptions.dart';
+import '../errors/exceptions.dart';
 
 class ApiClient {
   late final Dio _dio;
@@ -36,42 +36,25 @@ class ApiClient {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return const NetworkException(
-          message: 'Timeout na conexão',
-          statusCode: 408,
-        );
+        return NetworkException('Timeout na conexão');
       case DioExceptionType.badResponse:
         final statusCode = error.response?.statusCode;
         final message = error.response?.data?['message'] ?? 'Erro no servidor';
 
         if (statusCode != null && statusCode >= 400 && statusCode < 500) {
           if (statusCode == 401 || statusCode == 403) {
-            return AuthException(
-              message: message,
-              statusCode: statusCode,
-            );
+            return TravelSpotAuthException(message,
+                code: statusCode.toString());
           }
-          return ValidationException(
-            message: message,
-            statusCode: statusCode,
-          );
+          return ServerException(message);
         }
-        return ServerException(
-          message: message,
-          statusCode: statusCode,
-        );
+        return ServerException(message);
       case DioExceptionType.cancel:
-        return const NetworkException(
-          message: 'Requisição cancelada',
-        );
+        return NetworkException('Requisição cancelada');
       case DioExceptionType.unknown:
-        return const NetworkException(
-          message: 'Erro de conexão com a internet',
-        );
+        return NetworkException('Erro de conexão com a internet');
       default:
-        return NetworkException(
-          message: error.message ?? 'Erro desconhecido',
-        );
+        return NetworkException(error.message ?? 'Erro desconhecido');
     }
   }
 
