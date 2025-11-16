@@ -4,159 +4,275 @@
   "@appTitle": {
     "description": "The title of the application"
   },
-  
   "login": "Login",
   "@login": {
     "description": "Login button text"
   },
-  
   "register": "Register",
   "@register": {
     "description": "Register button text"
   },
-  
   "email": "Email",
   "@email": {
     "description": "Email field label"
   },
-  
   "password": "Password",
   "@password": {
     "description": "Password field label"
   },
-  
   "name": "Name",
   "@name": {
     "description": "Name field label"
   },
-  
   "confirmPassword": "Confirm Password",
   "@confirmPassword": {
     "description": "Confirm password field label"
   },
-  
   "emailRequired": "Please enter your email",
   "@emailRequired": {
     "description": "Email validation message"
   },
-  
   "emailInvalid": "Please enter a valid email",
   "@emailInvalid": {
     "description": "Invalid email validation message"
   },
-  
   "passwordRequired": "Please enter your password",
   "@passwordRequired": {
     "description": "Password validation message"
   },
-  
   "passwordTooShort": "Password must be at least 6 characters",
   "@passwordTooShort": {
     "description": "Password too short validation message"
   },
-  
   "nameRequired": "Please enter your name",
   "@nameRequired": {
     "description": "Name validation message"
   },
-  
   "confirmPasswordRequired": "Please confirm your password",
   "@confirmPasswordRequired": {
     "description": "Confirm password validation message"
   },
-  
   "passwordsDoNotMatch": "Passwords do not match",
   "@passwordsDoNotMatch": {
     "description": "Passwords do not match validation message"
   },
-  
   "dontHaveAccount": "Don't have an account? Register",
   "@dontHaveAccount": {
     "description": "Link to register page"
   },
-  
   "alreadyHaveAccount": "Already have an account? Login",
   "@alreadyHaveAccount": {
     "description": "Link to login page"
   },
-  
   "loginSuccess": "Login successful!",
   "@loginSuccess": {
     "description": "Login success message"
   },
-  
   "registerSuccess": "Registration successful!",
   "@registerSuccess": {
     "description": "Registration success message"
   },
-  
   "loginFailed": "Login failed",
   "@loginFailed": {
     "description": "Login failed message"
   },
-  
   "registrationFailed": "Registration failed",
   "@registrationFailed": {
     "description": "Registration failed message"
   },
-  
   "loading": "Loading...",
   "@loading": {
     "description": "Loading message"
   },
-  
   "welcome": "Welcome to TravelSpot!",
   "@welcome": {
     "description": "Welcome message"
   },
-  
   "createAccount": "Create your account",
   "@createAccount": {
     "description": "Create account subtitle"
   },
-  
   "signInToAccount": "Sign in to your account",
   "@signInToAccount": {
     "description": "Sign in subtitle"
   },
-  
   "biometricTitle": "Welcome back!",
   "@biometricTitle": {
     "description": "Biometric authentication title"
   },
-  
   "biometricDescription": "Use your biometric to quickly access your account",
   "@biometricDescription": {
     "description": "Biometric authentication description"
   },
-  
   "useBiometric": "Use Biometric",
   "@useBiometric": {
     "description": "Use biometric button"
   },
-  
   "useEmailPassword": "Use Email and Password",
   "@useEmailPassword": {
     "description": "Use email and password button"
   },
-  
   "biometricAlternative": "Or tap \"Use Email and Password\" to login normally",
   "@biometricAlternative": {
     "description": "Biometric alternative text"
   },
-  
   "biometricAuthenticating": "Checking biometrics...",
   "@biometricAuthenticating": {
     "description": "Biometric authentication in progress"
   },
-  
   "biometricError": "Biometric authentication error",
   "@biometricError": {
     "description": "Biometric authentication error"
   },
-  
   "goToLogin": "Go to Login",
   "@goToLogin": {
     "description": "Go to login button"
-  }
+  },
+  "logout": "Logout",
+  "save": "Save",
+  "cancel": "Cancel",
+  "error": "Error",
+  "success": "Success",
+  "close": "Close",
+  "send": "Send",
+  "places": "Places",
+  "addPlace": "Add Place",
+  "placeAddedSuccess": "Place added successfully!",
+  "errorPrefix": "Error: {message}",
+  "@errorPrefix": {
+    "description": "Error message prefix",
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "placeName": "Place Name",
+  "placeNameRequired": "Name is required",
+  "description": "Description",
+  "placeType": "Place Type",
+  "address": "Address",
+  "addressRequired": "Address is required",
+  "coordinatesOptional": "Coordinates (Optional)",
+  "latitude": "Latitude",
+  "latitudeExample": "Ex: -23.5505",
+  "longitude": "Longitude",
+  "longitudeExample": "Ex: -46.6333",
+  "selectOnMap": "Select on Map",
+  "cuisineTypes": "Cuisine Types:",
+  "selectImage": "Select Image",
+  "gallery": "Gallery",
+  "camera": "Camera",
+  "cropImage": "Crop Image",
+  "uploadImageError": "Image upload error: {error}",
+  "@uploadImageError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "coordinatesSelector": "Coordinates Selector",
+  "mapFeatureComingSoon": "Map feature will be implemented soon!",
+  "mapImplementationInfo": "To implement:\n• Add google_maps_flutter to pubspec.yaml\n• Configure Google Maps API Keys\n• Create interactive selection widget",
+  "useExampleSP": "Use Example (SP)",
+  "exampleCoordinatesSet": "Example coordinates set (São Paulo)",
+  "errorLoadingPlaces": "Error loading places",
+  "noPlacesFound": "No places found",
+  "loadingPlaces": "Loading places...",
+  "errorFavoriting": "Error favoriting: {message}",
+  "@errorFavoriting": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "needsAuthentication": "You need to be logged in to favorite places",
+  "favorites": "Favorites",
+  "myFavorites": "My Favorites",
+  "errorLoadingFavorites": "Error loading favorites",
+  "noFavoritesFound": "No favorites found",
+  "loadingFavorites": "Loading favorites...",
+  "reviews": "Reviews",
+  "reviewsOf": "Reviews of {placeName}",
+  "@reviewsOf": {
+    "placeholders": {
+      "placeName": {
+        "type": "String"
+      }
+    }
+  },
+  "addReview": "Add Review",
+  "rating": "Rating",
+  "comment": "Comment",
+  "commentOptional": "Comment (optional)",
+  "errorLoadingReviews": "Error loading reviews",
+  "noReviewsFound": "No reviews found",
+  "tryAgain": "Try again",
+  "reviewLabel": "Reviews",
+  "viewDetails": "View details",
+  "orContinueWithEmail": "Or continue with email and password",
+  "signInWithBiometric": "Sign in with biometric",
+  "signInWithPin": "Sign in with PIN",
+  "noFavoritesYet": "No favorites yet",
+  "addPlacesToFavorites": "Add places to your favorites to see them here",
+  "ratePlace": "Rate",
+  "noReviewsYet": "No reviews yet. Be the first to review!",
+  "by": "By:",
+  "submitReview": "Submit Review",
+  "ratingLabel": "Rating",
+  "imageProcessingError": "Error processing image: {error}",
+  "@imageProcessingError": {
+    "description": "Image processing error message",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "needsAuthToFavorite": "You need to be logged in to favorite.",
+  "needsAuthToRemoveFavorite": "You need to be logged in to remove favorites",
+  "needsAuthToReview": "You need to be logged in to review.",
+  "reviewPlace": "Review {placeName}",
+  "@reviewPlace": {
+    "description": "Review place title",
+    "placeholders": {
+      "placeName": {
+        "type": "String"
+      }
+    }
+  },
+  "yourRating": "Your rating:",
+  "commentOptionalLabel": "Comment (optional):",
+  "shareExperience": "Share your experience...",
+  "ratingVeryBad": "Very bad",
+  "ratingBad": "Bad",
+  "ratingRegular": "Regular",
+  "ratingGood": "Good",
+  "ratingExcellent": "Excellent",
+  "reviewsError": "Error: {message}",
+  "@reviewsError": {
+    "description": "Reviews error message",
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewBy": "By: {author}",
+  "@reviewBy": {
+    "description": "Review author",
+    "placeholders": {
+      "author": {
+        "type": "String"
+      }
+    }
+  },
+  "details": "Details",
+  "placeNotFound": "Place not found",
+  "sessionExpired": "Session Expired",
+  "sessionExpiredDescription": "Your session has expired or your credentials are no longer valid.",
+  "pleaseLoginAgain": "Please log in again to continue.",
+  "loginButton": "Login"
 }

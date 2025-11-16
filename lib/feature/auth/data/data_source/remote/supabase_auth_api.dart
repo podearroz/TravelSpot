@@ -5,35 +5,35 @@ part 'supabase_auth_api.chopper.dart';
 
 @ChopperApi()
 abstract class SupabaseAuthApi extends ChopperService {
-  @POST(path: "/auth/v1/signup")
+  @POST(path: "/signup")
   Future<Response<Map<String, dynamic>>> signUp(
     @Body() SupabaseSignUpRequestModel request,
   );
 
-  @POST(path: "/auth/v1/token")
+  @POST(path: "/token")
   Future<Response<Map<String, dynamic>>> signInWithPassword(
     @Query('grant_type') String grantType,
     @Field('email') String email,
     @Field('password') String password,
   );
 
-  @POST(path: "/auth/v1/logout")
+  @POST(path: "/logout")
   Future<Response<void>> signOut(
     @Header('Authorization') String authToken,
   );
 
-  @POST(path: "/auth/v1/recover")
+  @POST(path: "/recover")
   Future<Response<void>> resetPassword(
     @Body() SupabasePasswordResetRequestModel request,
   );
 
-  @POST(path: "/auth/v1/token")
+  @POST(path: "/token")
   Future<Response<Map<String, dynamic>>> refreshToken(
     @Query('grant_type') String grantType,
     @Field('refresh_token') String refreshToken,
   );
 
-  @GET(path: "/auth/v1/user")
+  @GET(path: "/user")
   Future<Response<Map<String, dynamic>>> getUser(
     @Header('Authorization') String authToken,
   );

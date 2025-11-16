@@ -21,7 +21,7 @@ final class _$SupabaseAuthApi extends SupabaseAuthApi {
   @override
   Future<Response<Map<String, dynamic>>> signUp(
       SupabaseSignUpRequestModel request) {
-    final Uri $url = Uri.parse('/auth/v1/signup');
+    final Uri $url = Uri.parse('/signup');
     final $body = request;
     final Request $request = Request(
       'POST',
@@ -38,7 +38,7 @@ final class _$SupabaseAuthApi extends SupabaseAuthApi {
     String email,
     String password,
   ) {
-    final Uri $url = Uri.parse('/auth/v1/token');
+    final Uri $url = Uri.parse('/token');
     final Map<String, dynamic> $params = <String, dynamic>{
       'grant_type': grantType
     };
@@ -58,7 +58,7 @@ final class _$SupabaseAuthApi extends SupabaseAuthApi {
 
   @override
   Future<Response<void>> signOut(String authToken) {
-    final Uri $url = Uri.parse('/auth/v1/logout');
+    final Uri $url = Uri.parse('/logout');
     final Map<String, String> $headers = {
       'Authorization': authToken,
     };
@@ -74,7 +74,7 @@ final class _$SupabaseAuthApi extends SupabaseAuthApi {
   @override
   Future<Response<void>> resetPassword(
       SupabasePasswordResetRequestModel request) {
-    final Uri $url = Uri.parse('/auth/v1/recover');
+    final Uri $url = Uri.parse('/recover');
     final $body = request;
     final Request $request = Request(
       'POST',
@@ -90,7 +90,7 @@ final class _$SupabaseAuthApi extends SupabaseAuthApi {
     String grantType,
     String refreshToken,
   ) {
-    final Uri $url = Uri.parse('/auth/v1/token');
+    final Uri $url = Uri.parse('/token');
     final Map<String, dynamic> $params = <String, dynamic>{
       'grant_type': grantType
     };
@@ -107,7 +107,7 @@ final class _$SupabaseAuthApi extends SupabaseAuthApi {
 
   @override
   Future<Response<Map<String, dynamic>>> getUser(String authToken) {
-    final Uri $url = Uri.parse('/auth/v1/user');
+    final Uri $url = Uri.parse('/user');
     final Map<String, String> $headers = {
       'Authorization': authToken,
     };

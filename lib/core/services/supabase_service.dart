@@ -85,6 +85,7 @@ class SupabaseService {
     double? longitude,
     String? type,
     String? cuisine,
+    String? imageUrl, // Novo campo para a URL da imagem
   }) async {
     try {
       final userId = getCurrentUserId();
@@ -103,6 +104,7 @@ class SupabaseService {
             'longitude': longitude,
             'type': type,
             'cuisine': cuisine,
+            'image_url': imageUrl, // Adicionado ao insert
           })
           .select()
           .single();
@@ -165,14 +167,21 @@ class SupabaseService {
     }
   }
 
-  // Upload de imagem
-  Future<String> uploadImage(Uint8List imageBytes, String fileName) async {
+  // Upload de imagem para um lugar
+  Future<String> uploadPlaceImage(Uint8List imageBytes, String fileName) async {
     try {
-      final path = 'uploads/${DateTime.now().millisecondsSinceEpoch}_$fileName';
+      final path = 'public/${DateTime.now().millisecondsSinceEpoch}_$fileName';
 
-      await _client.storage.from('images').uploadBinary(path, imageBytes);
+      await _client.storage.from('place-photos').uploadBinary(
+            path,
+            imageBytes,
+            fileOptions: const FileOptions(
+              cacheControl: '3600',
+              upsert: false,
+            ),
+          );
 
-      return _client.storage.from('images').getPublicUrl(path);
+      return _client.storage.from('place-photos').getPublicUrl(path);
     } catch (e) {
       throw ServerException(
         'Erro ao fazer upload da imagem: ${e.toString()}',

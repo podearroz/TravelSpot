@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelspot/core/di/application_container.dart';
+import 'package:travelspot/core/theme/app_theme.dart';
 import 'package:travelspot/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:travelspot/feature/auth/presentation/bloc/auth_event.dart';
 import 'package:travelspot/feature/auth/presentation/bloc/auth_state.dart';
@@ -34,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    
+
     return BlocProvider<AuthBloc>(
       create: (context) => ApplicationContainer.resolve<AuthBloc>(),
       child: Scaffold(
@@ -48,14 +49,14 @@ class _RegisterPageState extends State<RegisterPage> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.message),
-                  backgroundColor: Colors.red,
+                  backgroundColor: AppTheme.paletteOf(Theme.of(context)).error(),
                 ),
               );
             } else if (state is AuthAuthenticated) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(l10n.registerSuccess),
-                  backgroundColor: Colors.green,
+                  backgroundColor: AppTheme.paletteOf(Theme.of(context)).success(),
                 ),
               );
               Navigator.of(context).pushReplacementNamed('/home');
@@ -85,17 +86,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 40),
                     Text(
                       l10n.welcome,
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style:
+                          Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 8),
                     Text(
                       l10n.createAccount,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Colors.grey[600],
-                      ),
+                            color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                          ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 40),
@@ -182,7 +184,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                              _isConfirmPasswordVisible =
+                                  !_isConfirmPasswordVisible;
                             });
                           },
                         ),

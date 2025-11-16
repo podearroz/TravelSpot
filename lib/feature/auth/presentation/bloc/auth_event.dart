@@ -39,3 +39,5 @@ class AuthCheckRequested extends AuthEvent {}
 class BiometricAuthRequested extends AuthEvent {}
 
 class BiometricAuthSkipped extends AuthEvent {}
+
+class AuthSyncRequested extends AuthEvent {}

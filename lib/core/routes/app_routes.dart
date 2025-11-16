@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
 import '../../feature/auth/presentation/page/login_page.dart';
 import '../../feature/auth/presentation/page/register_page.dart';
+import '../../feature/auth/presentation/page/session_expired_page.dart';
 import '../../feature/places/presentation/page/places_list_page.dart';
 import '../../feature/places/presentation/page/add_place_page.dart';
+import '../../feature/favorites/presentation/page/favorites_page.dart';
+import '../../feature/home/presentation/page/home_page.dart';
 import '../../feature/places/domain/entity/place.dart';
 
 class AppRoutes {
   static const String login = '/login';
   static const String register = '/register';
+  static const String sessionExpired = '/session-expired';
   static const String home = '/home';
   static const String places = '/places';
   static const String addPlace = '/add-place';
+  static const String favorites = '/favorites';
   static const String placeDetail = '/place-detail';
 
   static Map<String, WidgetBuilder> get routes {
     return {
       login: (context) => const LoginPage(),
       register: (context) => const RegisterPage(),
-      home: (context) =>
-          const PlacesListPage(), // Home aponta para Places por enquanto
+      sessionExpired: (context) => const SessionExpiredPage(),
+      home: (context) => const HomePage(),
       places: (context) => const PlacesListPage(),
       addPlace: (context) => const AddPlacePage(),
+      favorites: (context) => const FavoritesPage(),
     };
   }
 

@@ -1,11 +1,15 @@
-import 'package:dartz/dartz.dart';
-import 'package:travelspot/core/errors/failure.dart';
+import 'package:travelspot/core/functional/try.dart';
 import 'package:travelspot/feature/places/domain/entity/place.dart';
+import 'package:travelspot/feature/places/domain/entity/place_type.dart';
+import 'package:travelspot/feature/places/domain/entity/cuisine.dart';
+import 'package:travelspot/feature/places/domain/use_case/add_place_use_case.dart';
 
 abstract class PlacesRepository {
-  Future<Either<Failure, List<Place>>> getPlaces();
-  Future<Either<Failure, Place>> getPlaceById(String id);
-  Future<Either<Failure, Place>> createPlace(Place place);
-  Future<Either<Failure, Place>> updatePlace(Place place);
-  Future<Either<Failure, void>> deletePlace(String id);
+  Future<Try<List<Place>>> getPlaces({int? limit, int? offset});
+  Future<Try<Place>> getPlaceById(String id);
+  Future<Try<Place>> addPlace(AddPlaceParams params);
+  Future<Try<Place>> updatePlace(String id, Map<String, dynamic> updates);
+  Future<Try<void>> deletePlace(String id);
+  Future<Try<List<PlaceType>>> getPlaceTypes();
+  Future<Try<List<Cuisine>>> getCuisines();
 }

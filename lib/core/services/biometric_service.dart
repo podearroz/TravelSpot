@@ -52,12 +52,14 @@ class BiometricService {
       );
       return isAuthenticated;
     } on PlatformException catch (e) {
-      print('Biometric authentication PlatformException: ${e.code} - ${e.message}');
-      
+      print(
+          'Biometric authentication PlatformException: ${e.code} - ${e.message}');
+
       // Tratar erros específicos
       switch (e.code) {
         case 'no_fragment_activity':
-          print('FragmentActivity error - this should be fixed by MainActivity changes');
+          print(
+              'FragmentActivity error - this should be fixed by MainActivity changes');
           return false;
         case 'NotAvailable':
           print('Biometric authentication not available');
@@ -98,7 +100,8 @@ class BiometricService {
       final canCheck = await canCheckBiometrics();
       final hasBiometrics = (await getAvailableBiometrics()).isNotEmpty;
 
-      print('Biometric check: supported=$isSupported, canCheck=$canCheck, hasBiometrics=$hasBiometrics');
+      print(
+          'Biometric check: supported=$isSupported, canCheck=$canCheck, hasBiometrics=$hasBiometrics');
       return isSupported && canCheck && hasBiometrics;
     } catch (e) {
       print('Error in canUseBiometricAuth: $e');
@@ -110,7 +113,7 @@ class BiometricService {
   Future<bool> authenticateForLogin() async {
     try {
       print('Checking if biometric authentication is available...');
-      
+
       // Verificação simples se pode usar biometria
       final canUse = await canUseBiometricAuth();
       if (!canUse) {
@@ -119,13 +122,13 @@ class BiometricService {
       }
 
       print('Requesting biometric authentication...');
-      
+
       // Tentar autenticação (o sistema vai mostrar o prompt nativo)
       final result = await authenticate(
         localizedReason: 'Use sua digital, face ou PIN para acessar',
         biometricOnly: false, // Permitir PIN/senha como fallback
       );
-      
+
       print('Biometric authentication completed with result: $result');
       return result;
     } catch (e) {

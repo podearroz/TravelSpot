@@ -2,7 +2,7 @@ abstract class Failure {
   final dynamic error;
   final String? code;
 
-  Failure({this.code, this.error});
+  Failure(failureMessage, {this.code, this.error});
 
   @override
   bool operator ==(other) =>
@@ -14,13 +14,13 @@ abstract class Failure {
 
 class UnknownFailure extends Failure {
   static const String _code = "UNKNOWN";
-  UnknownFailure(dynamic err) : super(code: _code, error: err);
+  UnknownFailure(dynamic err) : super(null, code: _code, error: err);
 }
 
 class KnownFailure extends Failure {
   final String? message;
   KnownFailure(String code, dynamic err, {this.message})
-      : super(code: code, error: err);
+      : super(null, code: code, error: err);
 
   @override
   String toString() {
@@ -30,15 +30,20 @@ class KnownFailure extends Failure {
 
 class ServerConnectionFailure extends Failure {
   static const String _code = "SERVER_CONNECTION";
-  ServerConnectionFailure([dynamic err]) : super(code: _code, error: err);
+  ServerConnectionFailure([dynamic err]) : super(null, code: _code, error: err);
 }
 
 class InvalidDataFailure extends Failure {
   static const String _code = "INVALID_DATA";
-  InvalidDataFailure([dynamic err]) : super(code: _code, error: err);
+  InvalidDataFailure([dynamic err]) : super(null, code: _code, error: err);
 }
 
 class AuthenticationFailure extends Failure {
   static const String _code = "AUTHENTICATION";
-  AuthenticationFailure([dynamic err]) : super(code: _code, error: err);
+  AuthenticationFailure([dynamic err]) : super(null, code: _code, error: err);
+}
+
+class ServerFailure extends Failure {
+  static const String _code = "SERVER_ERROR";
+  ServerFailure([dynamic err]) : super(null, code: _code, error: err);
 }

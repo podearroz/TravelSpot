@@ -8,103 +8,97 @@ class DetailedLoggingInterceptor implements Interceptor {
   @override
   Future<Response<BodyType>> intercept<BodyType>(Chain<BodyType> chain) async {
     final request = chain.request;
+
+    _logRequest(request);
+    _generateAndPrintCurl(request);
+
+    final response = await chain.proceed(request);
+
+    _logResponse(response);
+
+    return response;
+  }
+
+  void _logRequest(Request request) {
     final method = request.method.toUpperCase();
-    final url = request.url;
+    final url = request.uri;
     final headers = request.headers;
     final body = request.body;
 
-    // Log do request completo
-    _logger
-        .info('┌─────────────────────────────────────────────────────────────');
-    _logger.info('│ REQUEST');
-    _logger
-        .info('├─────────────────────────────────────────────────────────────');
+    _logger.info('┌──────────────── Request ────────────────┐');
     _logger.info('│ Method: $method');
     _logger.info('│ URL: $url');
     _logger.info('│ Headers:');
-
-    headers.forEach((key, value) {
-      _logger.info('│   $key: $value');
-    });
+    headers.forEach((key, value) => _logger.info('│   $key: $value'));
 
     if (body != null) {
       _logger.info('│ Body:');
       try {
-        // Tenta formatar JSON
-        if (body is String) {
-          final decoded = jsonDecode(body);
-          final prettyJson =
-              const JsonEncoder.withIndent('  ').convert(decoded);
-          _logger.info('│   $prettyJson');
-        } else {
-          _logger.info('│   $body');
-        }
+        final prettyJson = const JsonEncoder.withIndent('  ').convert(body);
+        _logger.info(prettyJson.split('\n').map((l) => '│   $l').join('\n'));
       } catch (e) {
         _logger.info('│   $body');
       }
     }
+    _logger.info('└─────────────────────────────────────────┘');
+  }
 
-    // Log formato CURL
-    _logger.info('│ CURL:');
-    String curl = 'curl -X $method';
+  void _logResponse(Response response) {
+    final statusCode = response.statusCode;
+    final headers = response.headers;
+    final body = response.body;
+
+    _logger.info('┌──────────────── Response ($statusCode) ────────────────┐');
+    _logger.info('│ Headers:');
+    headers.forEach((key, value) => _logger.info('│   $key: $value'));
+
+    if (body != null) {
+      _logger.info('│ Body:');
+      try {
+        dynamic bodyToLog = body;
+        if (body is String && body.isNotEmpty) {
+          bodyToLog = jsonDecode(body);
+        }
+        final prettyJson = const JsonEncoder.withIndent('  ').convert(bodyToLog);
+        _logger.info(prettyJson.split('\n').map((l) => '│   $l').join('\n'));
+      } catch (e) {
+        _logger.info('│   $body');
+      }
+    }
+    _logger.info('└──────────────────────────────────────────┘');
+  }
+
+  void _generateAndPrintCurl(Request request) {
+    final method = request.method.toUpperCase();
+    final url = request.uri;
+    final headers = request.headers;
+    final body = request.body;
+
+    final curlParts = <String>['curl -X $method'];
 
     headers.forEach((key, value) {
-      curl += ' -H "$key: $value"';
+      curlParts.add(' \\\n  -H "$key: $value"');
     });
 
     if (body != null) {
-      curl += ' -d \'$body\'';
-    }
-
-    curl += ' "$url"';
-    _logger.info('│   $curl');
-    _logger
-        .info('└─────────────────────────────────────────────────────────────');
-
-    // Executa a requisição
-    final response = await chain.proceed(request);
-
-    // Log do response completo
-    final statusCode = response.statusCode;
-    final responseHeaders = response.headers;
-    final responseBody = response.body;
-
-    _logger
-        .info('┌─────────────────────────────────────────────────────────────');
-    _logger.info('│ RESPONSE');
-    _logger
-        .info('├─────────────────────────────────────────────────────────────');
-    _logger.info('│ Status Code: $statusCode');
-    _logger.info('│ Headers:');
-
-    responseHeaders.forEach((key, value) {
-      _logger.info('│   $key: $value');
-    });
-
-    if (responseBody != null) {
-      _logger.info('│ Body:');
+      String bodyAsString;
       try {
-        // Tenta formatar JSON
-        if (responseBody is String) {
-          final decoded = jsonDecode(responseBody);
-          final prettyJson =
-              const JsonEncoder.withIndent('  ').convert(decoded);
-          _logger.info('│   $prettyJson');
-        } else if (responseBody is Map || responseBody is List) {
-          final prettyJson =
-              const JsonEncoder.withIndent('  ').convert(responseBody);
-          _logger.info('│   $prettyJson');
-        } else {
-          _logger.info('│   $responseBody');
-        }
+        bodyAsString = jsonEncode(body);
       } catch (e) {
-        _logger.info('│   $responseBody');
+        bodyAsString = body.toString();
       }
+      curlParts.add(" \\\n  -d '${bodyAsString.replaceAll("'", "'\\''")}'");
     }
 
-    _logger
-        .info('└─────────────────────────────────────────────────────────────');
+    curlParts.add(' \\\n  "$url"');
 
-    return response;
+    final curlCommand = curlParts.join('');
+
+    // ignore: avoid_print
+    print('┌───────────────── 🔥 cURL ─────────────────┐');
+    // ignore: avoid_print
+    print(curlCommand);
+    // ignore: avoid_print
+    print('└───────────────────────────────────────────┘');
   }
 }

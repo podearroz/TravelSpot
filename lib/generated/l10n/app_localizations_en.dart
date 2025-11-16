@@ -103,4 +103,278 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get goToLogin => 'Go to Login';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String get places => 'Places';
+
+  @override
+  String get addPlace => 'Add Place';
+
+  @override
+  String get placeAddedSuccess => 'Place added successfully!';
+
+  @override
+  String errorPrefix(String message) {
+    return 'Error: $message';
+  }
+
+  @override
+  String get placeName => 'Place Name';
+
+  @override
+  String get placeNameRequired => 'Name is required';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get placeType => 'Place Type';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get addressRequired => 'Address is required';
+
+  @override
+  String get coordinatesOptional => 'Coordinates (Optional)';
+
+  @override
+  String get latitude => 'Latitude';
+
+  @override
+  String get latitudeExample => 'Ex: -23.5505';
+
+  @override
+  String get longitude => 'Longitude';
+
+  @override
+  String get longitudeExample => 'Ex: -46.6333';
+
+  @override
+  String get selectOnMap => 'Select on Map';
+
+  @override
+  String get cuisineTypes => 'Cuisine Types:';
+
+  @override
+  String get selectImage => 'Select Image';
+
+  @override
+  String get gallery => 'Gallery';
+
+  @override
+  String get camera => 'Camera';
+
+  @override
+  String get cropImage => 'Crop Image';
+
+  @override
+  String uploadImageError(String error) {
+    return 'Image upload error: $error';
+  }
+
+  @override
+  String get coordinatesSelector => 'Coordinates Selector';
+
+  @override
+  String get mapFeatureComingSoon => 'Map feature will be implemented soon!';
+
+  @override
+  String get mapImplementationInfo => 'To implement:\n• Add google_maps_flutter to pubspec.yaml\n• Configure Google Maps API Keys\n• Create interactive selection widget';
+
+  @override
+  String get useExampleSP => 'Use Example (SP)';
+
+  @override
+  String get exampleCoordinatesSet => 'Example coordinates set (São Paulo)';
+
+  @override
+  String get errorLoadingPlaces => 'Error loading places';
+
+  @override
+  String get noPlacesFound => 'No places found';
+
+  @override
+  String get loadingPlaces => 'Loading places...';
+
+  @override
+  String errorFavoriting(String message) {
+    return 'Error favoriting: $message';
+  }
+
+  @override
+  String get needsAuthentication => 'You need to be logged in to favorite places';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get myFavorites => 'My Favorites';
+
+  @override
+  String get errorLoadingFavorites => 'Error loading favorites';
+
+  @override
+  String get noFavoritesFound => 'No favorites found';
+
+  @override
+  String get loadingFavorites => 'Loading favorites...';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String reviewsOf(String placeName) {
+    return 'Reviews of $placeName';
+  }
+
+  @override
+  String get addReview => 'Add Review';
+
+  @override
+  String get rating => 'Rating';
+
+  @override
+  String get comment => 'Comment';
+
+  @override
+  String get commentOptional => 'Comment (optional)';
+
+  @override
+  String get errorLoadingReviews => 'Error loading reviews';
+
+  @override
+  String get noReviewsFound => 'No reviews found';
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
+  String get reviewLabel => 'Reviews';
+
+  @override
+  String get viewDetails => 'View details';
+
+  @override
+  String get orContinueWithEmail => 'Or continue with email and password';
+
+  @override
+  String get signInWithBiometric => 'Sign in with biometric';
+
+  @override
+  String get signInWithPin => 'Sign in with PIN';
+
+  @override
+  String get noFavoritesYet => 'No favorites yet';
+
+  @override
+  String get addPlacesToFavorites => 'Add places to your favorites to see them here';
+
+  @override
+  String get ratePlace => 'Rate';
+
+  @override
+  String get noReviewsYet => 'No reviews yet. Be the first to review!';
+
+  @override
+  String get by => 'By:';
+
+  @override
+  String get submitReview => 'Submit Review';
+
+  @override
+  String get ratingLabel => 'Rating';
+
+  @override
+  String imageProcessingError(String error) {
+    return 'Error processing image: $error';
+  }
+
+  @override
+  String get needsAuthToFavorite => 'You need to be logged in to favorite.';
+
+  @override
+  String get needsAuthToRemoveFavorite => 'You need to be logged in to remove favorites';
+
+  @override
+  String get needsAuthToReview => 'You need to be logged in to review.';
+
+  @override
+  String reviewPlace(String placeName) {
+    return 'Review $placeName';
+  }
+
+  @override
+  String get yourRating => 'Your rating:';
+
+  @override
+  String get commentOptionalLabel => 'Comment (optional):';
+
+  @override
+  String get shareExperience => 'Share your experience...';
+
+  @override
+  String get ratingVeryBad => 'Very bad';
+
+  @override
+  String get ratingBad => 'Bad';
+
+  @override
+  String get ratingRegular => 'Regular';
+
+  @override
+  String get ratingGood => 'Good';
+
+  @override
+  String get ratingExcellent => 'Excellent';
+
+  @override
+  String reviewsError(String message) {
+    return 'Error: $message';
+  }
+
+  @override
+  String reviewBy(String author) {
+    return 'By: $author';
+  }
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get placeNotFound => 'Place not found';
+
+  @override
+  String get sessionExpired => 'Session Expired';
+
+  @override
+  String get sessionExpiredDescription => 'Your session has expired or your credentials are no longer valid.';
+
+  @override
+  String get pleaseLoginAgain => 'Please log in again to continue.';
+
+  @override
+  String get loginButton => 'Login';
 }
