@@ -19,7 +19,8 @@ class PlacePhoto extends Equatable {
   /// Retorna a URL pública da imagem a partir do storage path
   String get url {
     // Se já é uma URL completa, retorna como está
-    if (storagePath.startsWith('http://') || storagePath.startsWith('https://')) {
+    if (storagePath.startsWith('http://') ||
+        storagePath.startsWith('https://')) {
       return storagePath;
     }
     // Caso contrário, constrói a URL pública do Supabase

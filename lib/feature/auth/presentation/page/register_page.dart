@@ -49,14 +49,16 @@ class _RegisterPageState extends State<RegisterPage> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.message),
-                  backgroundColor: AppTheme.paletteOf(Theme.of(context)).error(),
+                  backgroundColor:
+                      AppTheme.paletteOf(Theme.of(context)).error(),
                 ),
               );
             } else if (state is AuthAuthenticated) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(l10n.registerSuccess),
-                  backgroundColor: AppTheme.paletteOf(Theme.of(context)).success(),
+                  backgroundColor:
+                      AppTheme.paletteOf(Theme.of(context)).success(),
                 ),
               );
               Navigator.of(context).pushReplacementNamed('/home');
@@ -96,7 +98,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       l10n.createAccount,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppTheme.paletteOf(Theme.of(context)).textSecondary(),
+                            color: AppTheme.paletteOf(Theme.of(context))
+                                .textSecondary(),
                           ),
                       textAlign: TextAlign.center,
                     ),

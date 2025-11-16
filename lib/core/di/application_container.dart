@@ -57,9 +57,10 @@ class ApplicationContainer {
     // Core Services
     _getIt.registerLazySingleton<SupabaseService>(() => SupabaseService());
     _getIt.registerLazySingleton<BiometricService>(() => BiometricService());
-    _getIt.registerLazySingleton<LocalStorageService>(() => LocalStorageService());
-    _getIt.registerLazySingleton<supabase.SupabaseClient>(() => supabase.Supabase.instance.client);
-
+    _getIt.registerLazySingleton<LocalStorageService>(
+        () => LocalStorageService());
+    _getIt.registerLazySingleton<supabase.SupabaseClient>(
+        () => supabase.Supabase.instance.client);
 
     // API Client Único - Supabase (consolida tudo)
     _getIt

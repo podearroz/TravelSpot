@@ -248,7 +248,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                   Positioned(
                                     top: 8,
                                     right: 8,
-                                    child: _buildFavoriteButton(context, favorite),
+                                    child:
+                                        _buildFavoriteButton(context, favorite),
                                   ),
                                 ],
                               ),
@@ -263,7 +264,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                   Positioned(
                                     top: 8,
                                     right: 8,
-                                    child: _buildFavoriteButton(context, favorite),
+                                    child:
+                                        _buildFavoriteButton(context, favorite),
                                   ),
                                 ],
                               ),
@@ -288,8 +290,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                     Icon(
                                       Icons.arrow_forward_ios,
                                       size: 16,
-                                      color: AppTheme.paletteOf(Theme.of(context))
-                                          .textSecondary(),
+                                      color:
+                                          AppTheme.paletteOf(Theme.of(context))
+                                              .textSecondary(),
                                     ),
                                   ],
                                 ),
@@ -322,12 +325,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                     Icon(
                                       Icons.star,
                                       size: 18,
-                                      color: AppTheme.paletteOf(Theme.of(context))
-                                          .warning(),
+                                      color:
+                                          AppTheme.paletteOf(Theme.of(context))
+                                              .warning(),
                                     ),
                                     const SizedBox(width: 4),
                                     Text(
-                                      currentPlace.averageRating.toStringAsFixed(1),
+                                      currentPlace.averageRating
+                                          .toStringAsFixed(1),
                                       style: const TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w600,
@@ -338,7 +343,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                       '(${currentPlace.reviewCount})',
                                       style: TextStyle(
                                         fontSize: 13,
-                                        color: AppTheme.paletteOf(Theme.of(context))
+                                        color: AppTheme.paletteOf(
+                                                Theme.of(context))
                                             .textSecondary(),
                                       ),
                                     ),
@@ -396,7 +402,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
         child: Icon(
           Icons.image_outlined,
           size: 64,
-          color: AppTheme.paletteOf(Theme.of(context)).textSecondary().withOpacity(0.3),
+          color: AppTheme.paletteOf(Theme.of(context))
+              .textSecondary()
+              .withOpacity(0.3),
         ),
       ),
     );
